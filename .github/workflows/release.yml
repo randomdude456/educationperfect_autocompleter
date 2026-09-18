@@ -1,0 +1,43 @@
+name: Create Release ZIP
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build release ZIP
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME:-manual}"
+          mkdir -p "dist/EP-Auto-Answer-${VERSION}"
+          cp EP-Auto-Answer.user.js README.md SETUP.md CHANGELOG.md LICENSE "dist/EP-Auto-Answer-${VERSION}/"
+          cd dist
+          zip -r "EP-Auto-Answer-${VERSION}.zip" "EP-Auto-Answer-${VERSION}"
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            "dist/EP-Auto-Answer-${GITHUB_REF_NAME}.zip" \
+            --title "EP Auto Answer ${GITHUB_REF_NAME}" \
+            --generate-notes
+
+      - name: Upload ZIP as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EP-Auto-Answer-${{ github.ref_name }}
+          path: dist/*.zip
