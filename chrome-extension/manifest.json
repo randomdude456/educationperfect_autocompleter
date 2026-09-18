@@ -1,22 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "EP Auto",
-  "version": "5.0.0",
-  "description": "EP vocabulary helper with manual start, pacing, cooldowns, and safe pauses.",
+  "name": "EP Helper",
+  "version": "5.1.0",
+  "description": "Shows matching Education Perfect vocabulary answers and lets the user copy or fill them manually.",
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": [
         "https://app.educationperfect.com/*",
         "https://*.educationperfect.com/*"
       ],
-      "js": [
-        "content.js"
-      ],
-      "run_at": "document_idle",
-      "world": "ISOLATED"
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
-  ],
-  "permissions": [
-    "storage"
   ]
 }
