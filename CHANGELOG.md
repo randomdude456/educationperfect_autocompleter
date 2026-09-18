@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.1.1
+
+- Added an optional **Auto-fill answer box** setting.
+- Auto-fill is OFF by default.
+- Auto-fill never presses Enter, Submit, Continue, or Next.
+- Added a clear warning that no automation can be guaranteed ban-proof.
+
 ## 5.1.0
 
 - Replaced automatic answering with manual-submit assistant mode.

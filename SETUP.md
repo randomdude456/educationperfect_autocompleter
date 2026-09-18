@@ -9,3 +9,10 @@
 7. Start the activity normally.
 8. Use **Copy** or **Fill answer box**.
 9. Press Enter/Submit yourself.
+
+
+## Optional auto-fill
+
+Open **Settings** in EP Helper and set **Auto-fill answer box** to **On**. EP Helper will fill the field, but you must still press Enter/Submit yourself. Auto-fill is OFF by default.
+
+No browser automation can be guaranteed ban-proof, so use it only where you are allowed to.

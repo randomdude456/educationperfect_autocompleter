@@ -1,4 +1,4 @@
-# EP Helper 5.1
+# EP Helper 5.1.1
 
 EP Helper shows the matching answer for Education Perfect vocabulary questions.
 
@@ -15,7 +15,7 @@ You stay in control:
 3. Open `chrome://extensions`.
 4. Turn on **Developer mode**.
 5. Click **Load unpacked**.
-6. Select the extracted `EP-Helper-v5.1.0` folder.
+6. Select the extracted `EP-Helper-v5.1.1` folder.
 
 ## Use it
 
@@ -34,6 +34,7 @@ You stay in control:
 - **Show answer after** — wait 0–5 seconds before revealing the answer.
 - **Cooldown** — adds a short delay between questions.
 - **Answer coverage** — 100%, 80%, or 60%. At 80%, some questions are left as **Your turn** instead of showing an answer.
+- **Auto-fill answer box** — OFF by default. When ON, EP Helper fills the answer field after revealing the answer, but **you still press Enter/Submit yourself**.
 
 ## Important
 
@@ -45,6 +46,10 @@ EP Helper never:
 - navigates Education Perfect for you
 
 This avoids the redirect problem seen in older versions.
+
+### About account safety
+
+There is **no way to guarantee that using a browser helper cannot be flagged or restricted by Education Perfect**. Rules and detection can change. EP Helper does not include anti-detection or bypass features. If you want the lowest-risk mode, leave **Auto-fill OFF** and use the shown answer manually.
 
 ## If you get stuck
 
