@@ -1,5 +1,16 @@
 # Changelog
 
+## 5.0.0
+
+- Replaced the normal Tampermonkey install with a Chrome Manifest V3 extension.
+- No code pasting, browser console, or userscript manager is required.
+- Runs as an isolated Chrome content script.
+- Removed the browser-history monkeypatch used by the old userscript build.
+- Kept the safer flow: load vocabulary first, then press Enter before automation starts.
+- Kept speed limit, cooldown, manual coverage, and safe error pauses.
+- Simplified beginner install and troubleshooting instructions.
+- The extension does not attempt to bypass Education Perfect platform protections.
+
 ## 4.3.0
 
 - Added a minimum speed limit setting.

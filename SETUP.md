@@ -1,35 +1,42 @@
-# Simple setup
+# EP Auto — Chrome setup
 
 1. Download the newest ZIP from:
    https://github.com/randomdude456/educationperfect_autocompleter/releases
-2. Extract it.
-3. Install **Tampermonkey** from the Chrome Web Store.
-4. Open `chrome://extensions` → Tampermonkey → **Details** → turn on **Allow User Scripts**.
-5. Open Tampermonkey → **Dashboard** → **+**.
-6. Delete the example code.
-7. Copy everything from `EP-Auto-Answer.user.js` into Tampermonkey.
-8. Save.
-9. Open the EP vocabulary list.
-10. Click **Load vocabulary**.
-11. When it says **Ready**, press **Enter**.
 
-EP Auto will not start before you press Enter.
+2. Extract the ZIP.
+
+3. Open `chrome://extensions`.
+
+4. Turn on **Developer mode**.
+
+5. Click **Load unpacked**.
+
+6. Select the extracted folder containing `manifest.json`.
+
+7. Open Education Perfect.
+
+8. Open the page showing the vocabulary pairs.
+
+9. Click **Load vocabulary**.
+
+10. When it says **Ready — Press Enter to begin**, press **Enter**.
+
+Do not paste anything into Developer Tools or the browser console.
 
 ## Stuck?
 
-Open EP Auto **Settings → Copy diagnostics** and paste them into an AI with this:
+Copy this into ChatGPT or another AI:
 
 ```text
-I am using EP Auto from:
+I am installing EP Auto from:
 https://github.com/randomdude456/educationperfect_autocompleter
 
-Here are the diagnostics:
-PASTE DIAGNOSTICS HERE
+I use Google Chrome.
 
 Help me one step at a time.
-Give me only ONE step per reply.
-Keep it very short and simple.
-Do not ask me to run JavaScript in the browser console.
-Ask for a screenshot if you need more information.
-Wait for me to finish each step before giving me the next one.
+Give me ONE short step per reply.
+Tell me exactly what to click.
+Do not tell me to paste code into the browser console.
+If it fails, ask me for EP Auto's Copy diagnostics text or a screenshot.
+Wait for me to finish each step before continuing.
 ```
