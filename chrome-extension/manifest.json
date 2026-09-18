@@ -1,16 +1,20 @@
 {
   "manifest_version": 3,
   "name": "EP Helper",
-  "version": "5.1.0",
-  "description": "Shows matching Education Perfect vocabulary answers and lets the user copy or fill them manually.",
-  "permissions": ["storage"],
+  "version": "5.1.1",
+  "description": "Shows matching Education Perfect vocabulary answers with optional auto-fill. Submission and navigation stay manual.",
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": [
         "https://app.educationperfect.com/*",
         "https://*.educationperfect.com/*"
       ],
-      "js": ["content.js"],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ]

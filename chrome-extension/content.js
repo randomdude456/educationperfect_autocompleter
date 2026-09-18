@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const VERSION = '5.1.0';
+  const VERSION = '5.1.1';
   const POLL_MS = 650;
   const FUZZY_THRESHOLD = 0.82;
   const STORAGE_KEY = 'ep-helper-5.1-answer-map';
@@ -11,6 +11,7 @@
     revealDelayMs: 1000,
     cooldownMs: 500,
     coveragePercent: 100,
+    autoFill: false,
   };
 
   const SEL = {
@@ -309,7 +310,15 @@
     answerCard.classList.add('show');
     copyBtn.disabled = false;
     fillBtn.disabled = false;
-    setState('Answer ready', 'Copy it or fill the box, then submit it yourself');
+
+    if (settings.autoFill) {
+      setState('Answer ready', 'Auto-fill is on — you still submit it yourself');
+      setTimeout(() => {
+        if (currentAnswer === answer && settings.autoFill) fillAnswerBox(true);
+      }, 80);
+    } else {
+      setState('Answer ready', 'Copy it or fill the box, then submit it yourself');
+    }
   }
 
   function nativeSetValue(el, value) {
@@ -323,7 +332,7 @@
     else el.value = value;
   }
 
-  function fillAnswerBox() {
+  function fillAnswerBox(automatic = false) {
     if (!currentAnswer || !isGamePage()) return;
     const input = getAnswerInput();
     if (!input) {
@@ -332,7 +341,7 @@
       return;
     }
 
-    input.focus();
+    if (!automatic) input.focus();
     if (input.isContentEditable) {
       input.textContent = currentAnswer;
       input.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: currentAnswer }));
@@ -342,8 +351,8 @@
       input.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
-    showToast('Answer filled — you submit it');
-    addDiagnostic(`User filled answer box for “${currentQuestion}”`);
+    showToast(automatic ? 'Answer auto-filled — you submit it' : 'Answer filled — you submit it');
+    addDiagnostic(`${automatic ? 'Auto-filled' : 'User filled'} answer box for “${currentQuestion}”`);
     setState('Filled', 'Press Enter or Submit yourself');
   }
 
@@ -450,6 +459,7 @@
       `Reveal delay: ${settings.revealDelayMs}ms`,
       `Cooldown: ${settings.cooldownMs}ms`,
       `Coverage: ${settings.coveragePercent}%`,
+      `Auto-fill: ${settings.autoFill ? 'ON' : 'OFF'}`,
       '',
       ...diagnostics,
     ].join('\n');
@@ -488,6 +498,7 @@
           <div class="eph-row"><label>Show answer after</label><select id="eph-delay"><option value="0">Immediately</option><option value="1000">1 sec</option><option value="2000">2 sec</option><option value="3000">3 sec</option><option value="5000">5 sec</option></select></div>
           <div class="eph-row"><label>Cooldown</label><select id="eph-cool"><option value="0">Off</option><option value="500">0.5 sec</option><option value="1000">1 sec</option><option value="2000">2 sec</option></select></div>
           <div class="eph-row"><label>Answer coverage</label><select id="eph-cover"><option value="100">100%</option><option value="80">80%</option><option value="60">60%</option></select></div>
+          <div class="eph-row"><label>Auto-fill answer box</label><select id="eph-autofill"><option value="false">Off</option><option value="true">On</option></select></div>
           <button class="eph-small" id="eph-copydiag">Copy diagnostics</button><div id="eph-diag">Ready</div>
         </details>
       </div>`;
@@ -506,9 +517,11 @@
     const delay = panel.querySelector('#eph-delay');
     const cool = panel.querySelector('#eph-cool');
     const cover = panel.querySelector('#eph-cover');
+    const autofill = panel.querySelector('#eph-autofill');
     delay.value = String(settings.revealDelayMs);
     cool.value = String(settings.cooldownMs);
     cover.value = String(settings.coveragePercent);
+    autofill.value = String(Boolean(settings.autoFill));
 
     loadBtn.addEventListener('click', loadVocabulary);
     copyBtn.addEventListener('click', copyAnswer);
@@ -517,7 +530,14 @@
 
     delay.addEventListener('change', () => { settings.revealDelayMs = Number(delay.value); saveSettings(); });
     cool.addEventListener('change', () => { settings.cooldownMs = Number(cool.value); saveSettings(); });
-    cover.addEventListener('change', () => { settings.coveragePercent = Number(cover.value); saveSettings(); currentQuestion = ''; currentAnswer = ''; saveSettings(); });
+    cover.addEventListener('change', () => { settings.coveragePercent = Number(cover.value); saveSettings(); currentQuestion = ''; currentAnswer = ''; });
+    autofill.addEventListener('change', () => {
+      settings.autoFill = autofill.value === 'true';
+      saveSettings();
+      showToast(settings.autoFill ? 'Auto-fill ON' : 'Auto-fill OFF');
+      addDiagnostic(`Auto-fill ${settings.autoFill ? 'enabled' : 'disabled'} by user`);
+      if (settings.autoFill && currentAnswer && !currentAnswer.startsWith('__')) fillAnswerBox(true);
+    });
 
     updateCount();
     if (Object.keys(answerMap).length) setState('Vocabulary ready', 'Start the activity normally');
