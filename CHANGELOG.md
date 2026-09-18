@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.3.0
+
+- Added a minimum speed limit setting.
+- Added a configurable cooldown between questions.
+- Added 100%, 80%, and 60% auto-answer coverage; manual coverage never intentionally answers incorrectly.
+- Separated vocabulary loading from starting the activity. EP Auto now waits for the user to press Enter before starting.
+- Reworked vocabulary loading to collect pairs while scrolling and retry once on failure.
+- Simplified the panel UI.
+- Added safe pauses for missing answers, wrong verdicts, submit failures, and timeouts.
+- Removed all browser-console debug output. Diagnostics are shown and copied from the panel instead.
+
 ## 4.2.1
 
 - Rewrote the README and setup guide for complete beginners.

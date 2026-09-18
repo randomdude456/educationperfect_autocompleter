@@ -1,115 +1,131 @@
 # EP Auto
 
-EP Auto helps automate supported Education Perfect vocabulary activities.
+EP Auto helps with Education Perfect vocabulary activities.
 
 ## Install on Chrome
 
-### 1. Download EP Auto
+### 1. Download it
 
-Open:
+Go to:
 
-https://github.com/randomdude456/educationperfect_autocompleter
+https://github.com/randomdude456/educationperfect_autocompleter/releases
 
-Then:
+Open the newest release and download the ZIP under **Assets**.
 
-1. Click **Releases**.
-2. Open the newest release.
-3. Download the ZIP under **Assets**.
-4. Extract the ZIP.
+Extract the ZIP.
 
 ### 2. Install Tampermonkey
 
-1. Open the **Chrome Web Store**.
-2. Search for **Tampermonkey**.
-3. Click **Add to Chrome**.
+Open the Chrome Web Store, search **Tampermonkey**, then click **Add to Chrome**.
 
-### 3. Allow scripts in Chrome
+### 3. Allow scripts
 
 1. Open `chrome://extensions`
-2. Find **Tampermonkey**.
-3. Click **Details**.
-4. Turn on **Allow User Scripts**.
+2. Find **Tampermonkey**
+3. Click **Details**
+4. Turn on **Allow User Scripts**
 
-If you do not see **Allow User Scripts**, turn on **Developer mode** on the main extensions page instead.
+If you do not see that option, turn on **Developer mode** on the extensions page.
 
-### 4. Add EP Auto to Tampermonkey
+### 4. Add EP Auto
 
-1. Click the **Tampermonkey** icon in Chrome.
-2. Click **Dashboard**.
-3. Click the **+** button.
-4. Delete the example code.
-5. Open `EP-Auto-Answer.user.js` from the ZIP you extracted.
-6. Copy everything in that file.
-7. Paste it into Tampermonkey.
-8. Press **Ctrl+S** on Windows or **Command+S** on Mac.
+1. Click the **Tampermonkey** icon
+2. Click **Dashboard**
+3. Click **+**
+4. Delete the example code
+5. Open `EP-Auto-Answer.user.js` from the ZIP
+6. Copy everything in the file
+7. Paste it into Tampermonkey
+8. Press **Ctrl+S** on Windows or **Command+S** on Mac
 
 Make sure EP Auto is switched **ON** in Tampermonkey.
 
 ## Use it
 
-1. Open Education Perfect.
-2. Open the vocabulary activity.
-3. Go to the page that shows the vocabulary pairs.
-4. Click **Load & Start** in the EP Auto panel.
-5. Leave **Automation ON**.
+1. Open the Education Perfect vocabulary page that shows the word pairs.
+2. Click **Load vocabulary**.
+3. Wait until EP Auto says **Ready — Press Enter to begin**.
+4. Press **Enter**.
 
-That is it.
+EP Auto will not start the activity or answer questions before you press Enter.
 
-## If you get stuck
+## Settings
 
-Copy this prompt into ChatGPT or another AI:
+Open **Settings** in the EP Auto panel if you want to change anything.
+
+- **Speed limit** — minimum time before it answers each question.
+- **Cooldown** — extra wait after moving to the next question.
+- **Auto-answer coverage** — choose how many questions EP Auto handles.
+  - **100%** — automates every supported question.
+  - **80%** — roughly 1 in 5 questions is left for you to answer manually.
+  - **60%** — leaves more questions for you.
+- **Auto Next** — automatically moves to the next question after a submitted answer.
+
+The coverage setting does **not** intentionally enter wrong answers.
+
+## If something goes wrong
+
+EP Auto will normally pause instead of repeatedly clicking or submitting.
+
+Open **Settings → Copy diagnostics**, then paste the result into ChatGPT or another AI with this prompt:
 
 ```text
-I am trying to install EP Auto from:
+I am using EP Auto from:
 https://github.com/randomdude456/educationperfect_autocompleter
 
 I am using Google Chrome.
 
-Help me one step at a time.
+Here are the diagnostics from EP Auto:
+PASTE DIAGNOSTICS HERE
+
+Help me fix it one step at a time.
 
 IMPORTANT:
 - Give me only ONE step per reply.
 - Tell me exactly what to click or type.
-- Keep every reply very short and simple.
-- Assume I know nothing about GitHub, Tampermonkey, extensions, ZIP files, or Terminal.
-- If something goes wrong, ask me to paste the exact error or send a screenshot.
-- Do not give me multiple solutions unless the first one fails.
-- Wait for me to say I finished each step before giving me the next one.
+- Keep it very short and simple.
+- Do not ask me to run JavaScript in the browser console.
+- Do not ask me to use developer tools unless there is no simpler option.
+- If you need more information, ask me for a screenshot.
+- Wait for me to finish each step before giving me the next one.
 ```
 
 ## Quick fixes
 
+**It says it could not load the list**
+
+Go back to the page that visibly shows the vocabulary pairs, then click **Load vocabulary** again.
+
+**It says “Your turn”**
+
+Either the answer was not found, or your coverage setting intentionally left that question for you. Answer that question normally and EP Auto will continue on a later question.
+
+**It paused**
+
+Check the message in the panel. Fix the question if needed, then click **Resume**.
+
 **EP Auto does not appear**
 
 - Make sure Tampermonkey is ON.
-- Make sure EP Auto is ON inside Tampermonkey.
+- Make sure EP Auto is ON in Tampermonkey.
 - Make sure **Allow User Scripts** is enabled.
 - Reload Education Perfect.
-
-**It says “No saved answer”**
-
-Go back to the page showing the vocabulary pairs and press **Load & Start** again.
-
-**You installed a newer version**
-
-Disable or delete the older EP Auto version in Tampermonkey.
 
 ## Updating EP Auto
 
 1. Download the newest ZIP from **Releases**.
 2. Extract it.
-3. Replace the code in your Tampermonkey EP Auto script with the new `EP-Auto-Answer.user.js`.
-4. Save.
+3. Open your EP Auto script in Tampermonkey.
+4. Replace the old code with the new `EP-Auto-Answer.user.js`.
+5. Save.
 
 ## Alternative to Tampermonkey
 
-You can also use **Violentmonkey**.
-
-It is open source and works on Chrome.
+**Violentmonkey** also works and is open source:
 
 https://violentmonkey.github.io/
 
-For the easiest setup, just use **Tampermonkey** and follow the steps above.
+For the simplest setup, use Tampermonkey and follow the steps above.
 
 ## Credits
 
