@@ -25,4 +25,4 @@ Suggested description:
 Education Perfect userscript with Unicode vocab matching, auto submit, and auto advance.
 
 Suggested first release tag:
-v4.2.0
+v4.2.1

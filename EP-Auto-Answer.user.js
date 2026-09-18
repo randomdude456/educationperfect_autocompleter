@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         🎓 Education Perfect - Auto Answer (2026) - Compatibility Patch
 // @namespace    https://educationperfect.com
-// @version      4.2.0
+// @version      4.2.1
 // @description  Friendly EP automation UI with reliable Fill → Enter/Submit → verdict → Next flow.
 // @author       lllons and Otjl12; compatibility patch
 // @match        https://app.educationperfect.com/*
@@ -87,12 +87,12 @@
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   function log(...args) {
-    if (CFG.debug) console.log('[EP 4.2]', ...args);
+    if (CFG.debug) console.log('[EP 4.2.1]', ...args);
   }
 
   function setDebug(message) {
     if (debugEl) debugEl.textContent = message || '';
-    if (CFG.debug && message) console.log('[EP 4.2]', message);
+    if (CFG.debug && message) console.log('[EP 4.2.1]', message);
   }
 
   function setState(title, detail = '') {
@@ -626,7 +626,7 @@
       }
       await tryFill();
     } catch (err) {
-      console.warn('[EP 4.2] tick error', err);
+      console.warn('[EP 4.2.1] tick error', err);
       setDebug(`Error: ${err?.message || err}`);
     } finally {
       tickBusy = false;
@@ -789,7 +789,7 @@
     panel.id = 'ep-panel';
     panel.innerHTML = `
       <div id="ep-handle">
-        <span id="ep-logo">EP Auto <span class="ep-version">4.2</span></span>
+        <span id="ep-logo">EP Auto <span class="ep-version">4.2.1</span></span>
         <button class="ep-icon-btn" id="ep-help" title="Setup guide">?</button>
         <button class="ep-icon-btn" id="ep-x" title="Hide">✕</button>
       </div>

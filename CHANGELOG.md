@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.2.1
+
+- Rewrote the README and setup guide for complete beginners.
+- Added a one-step-at-a-time AI help prompt for people who get stuck.
+- Simplified the GitHub push helper to use SSH only.
+- Updated repository links for the `randomdude456` username.
+- No automation behaviour changes.
+
 ## 4.2.0
 
 - Redesigned the control panel around a simple status display.
